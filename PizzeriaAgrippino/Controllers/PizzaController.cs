@@ -25,12 +25,12 @@ namespace PizzeriaAgrippino.Controllers
             Pizze TrovataDescrzionePizza = null;
             //Per trovare la pizza scansiona la lista Pizze, lo facciamo con richiamando il metodo getposts che scansiona tutta la lista delle nostre pizze
             //Ovviamente creo questa vista nel controller pizze(cartella)
-            foreach(Pizze pizze in PostData.GetPosts())
+            foreach(Pizze pizzes in PostData.GetPosts())
             {
                 //Se trovo una pizza con lo stesso id, dico che TDP è uguale a pizze e poi eseguo un break per uscire.
-                if(pizze.Id == id)
+                if(pizzes.Id == id)
                 {
-                    TrovataDescrzionePizza = pizze;
+                    TrovataDescrzionePizza = pizzes;
                     break;
                 }
             }
@@ -45,6 +45,31 @@ namespace PizzeriaAgrippino.Controllers
                 //Dopo aver fatto tutto questo devo creare in pizze una vista 
             }
         }
+        //creiamo un metodo per il aggiugere pizze ala mia pizzeria da parte dell'utente
+        //Inseriamo il httpPost e inseriamo il validation pr evitare gli hacker 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        //creiamo poi un metodo chiamato creaPizza per acciugnere le pizze, aggiugnere il modello 
+        public IActionResult CreaPizza(Pizze NuovaPizza)
+        {
+            //se il modello non  è valido ritorniamo una view
+            if(!ModelState.IsValid)
+            {
+                return View();
+
+            }
+            //Dato che non abbiamo un database dobbiamo inserire noi una nuovo oggetto che ha tutti gli aytributi della pizza 
+            //andiamo poi a richiamare tutto con il return redtoact e puntiamo alla nostra Homepage
+            Pizze NuovaPizzaDaInserire = new Pizze(PostData.GetPosts().Count, NuovaPizza.ImagePizza, NuovaPizza.NamePizza, NuovaPizza.DescriptionPizza, NuovaPizza.PricePizza);
+            //Se il modello è corretto prendiamo la lista postdata e il metodo get che aggiugnerà questo post alla lista
+            PostData.GetPosts().Add(NuovaPizzaDaInserire);
+            return RedirectToAction("Homapage");
+
+                
+        }
+
+        
+            
     }
 }
  

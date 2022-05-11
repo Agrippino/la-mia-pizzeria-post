@@ -19,8 +19,8 @@ namespace PizzeriaAgrippino.Utilies
 
             //se una lista è vuota devo dicharare io cosa fare, instazio un for 
             List<Pizze> NuovaPizza = new List<Pizze> ();
-            
-            
+
+            for (int i = 0; i < NuovaPizza.Count; i++) ;
             
                 Pizze  Margherita = new Pizze (0,"~/img_pizza/Margherita.png", "Margherita", "Pomodoro San Marzano D.O.P., fior di latte di Agerola, basilico e olio evo.", 4.00 );
                 NuovaPizza.Add(Margherita);
