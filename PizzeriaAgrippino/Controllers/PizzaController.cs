@@ -63,7 +63,7 @@ namespace PizzeriaAgrippino.Controllers
             Pizze NuovaPizzaDaInserire = new Pizze(PostData.GetPosts().Count, NuovaPizza.ImagePizza, NuovaPizza.NamePizza, NuovaPizza.DescriptionPizza, NuovaPizza.PricePizza);
             //Se il modello è corretto prendiamo la lista postdata e il metodo get che aggiugnerà questo post alla lista
             PostData.GetPosts().Add(NuovaPizzaDaInserire);
-            return RedirectToAction("Homapage");
+            return RedirectToAction("Index");
 
                 
         }
