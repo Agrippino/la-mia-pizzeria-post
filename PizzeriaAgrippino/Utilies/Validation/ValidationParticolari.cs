@@ -13,11 +13,12 @@ namespace PizzeriaAgrippino.Utilies.Validation
 
                 if (fieldValue == null || fieldValue.Trim().Contains(" ") == false)
                 {
-                    return new ValidationResult("Il campo deve contenere almeno due parole");
+                    return new ValidationResult("Il campo deve contenere almeno cinque parole");
                 }
 
                 return ValidationResult.Success;
             }
+           
 
         }
     }
